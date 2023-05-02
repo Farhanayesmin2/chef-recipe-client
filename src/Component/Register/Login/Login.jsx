@@ -62,7 +62,7 @@ const Login = () => {
                     <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                   </svg>
                 </div>
-                <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+                <button className=" bg-gradient-to-r from-[#774d62] via-pink-100 to-[#774d62] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300">
                   Login
                 </button>
               </form>

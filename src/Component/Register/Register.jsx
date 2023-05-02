@@ -8,7 +8,7 @@ const Register = () => {
              <div className="font-sans ">
         <section className=" min-h-screen flex items-center justify-center">
           {/* login container */}
-          <div className="bg-gray-300 opacity-75 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+          <div className="bg-gray-300  flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
             {/* form */}
             <div className="md:w-1/2 px-8 md:px-16">
               <h2 className="font-bold text-2xl text-rose-700 flex">
@@ -77,7 +77,7 @@ const Register = () => {
 
                 <button
                   type="submit"
-                  class="text-black bg-gradient-to-r from-rose-600 via-pink-200 to-rose-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300"
+                  class="text-black bg-gradient-to-r from-[#774d62] via-pink-100 to-[#774d62] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300"
                 >
                   Register
                 </button>
@@ -104,7 +104,7 @@ const Register = () => {
               <img
                 alt="food"
                 src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600"
-                className="object-fit h-auto w-auto rounded-md xl:col-span-3 bg-gray-900 opacity-25"
+                className="object-fit h-auto w-auto rounded-md xl:col-span-3 bg-gray-900 opacity-50"
               />
             </div>
           </div>
