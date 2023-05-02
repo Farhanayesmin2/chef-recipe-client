@@ -31,3 +31,6 @@
   require('flowbite/plugin')
   ]
 - npm install react-icons --save
+
+# For Authentication, i use in this project firebase authentication.
+- npm install firebase
