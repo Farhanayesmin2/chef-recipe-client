@@ -24,9 +24,10 @@
 
 @tailwind utilities;
 
-### After that, I install Flowbite - Tailwind CSS component library
+### After that, I install Flowbite - Tailwind CSS component library and react icons
 
 - npm install flowbite flowbite-react
 - plugins: [
   require('flowbite/plugin')
   ]
+- npm install react-icons --save
