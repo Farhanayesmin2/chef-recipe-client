@@ -8,6 +8,8 @@ content: [
   theme: {
     extend: {},
   },
-  plugins: [],
+   plugins: [
+        require('flowbite/plugin')
+    ]
 }
 

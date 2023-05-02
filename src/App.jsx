@@ -1,6 +1,7 @@
 
-
+import { RouterProvider } from 'react-router-dom'
 import './App.css'
+import { router } from './Component/Routes/Routes'
 
 function App() {
 
@@ -8,9 +9,10 @@ function App() {
   return (
     <>
       <div>
-      <h1 className="text-3xl font-bold underline text-blue-900">
-          Hello world!
-        </h1>
+
+  <RouterProvider router={router} />
+
+
       </div>
      
     </>
