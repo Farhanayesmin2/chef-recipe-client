@@ -1,5 +1,6 @@
 import React from 'react';
-import { IoFastFoodOutline, IoFastFoodSharp } from "react-icons/io5";
+import {  IoFastFoodSharp } from "react-icons/io5";
+   
 const Footer = () => {
     return (
         <div>

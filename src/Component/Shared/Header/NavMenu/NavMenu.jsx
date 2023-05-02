@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { IoFastFoodOutline, IoFastFoodSharp } from "react-icons/io5";
+  
 function NavMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -8,7 +10,9 @@ function NavMenu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-                      <div className="text-2xl  text-[#774d62] hidden lg:block from-current font-mono">Food Cuisine</div>
+                      <div className="text-2xl  text-[#774d62] hidden lg:block from-current font-mono ">
+                          <span className='flex justify-center h-8  items-center font-bold'> 
+                          <IoFastFoodSharp className='flex justify-center h-8  items-center font-bold' />Food Cuisine </span></div>
                       
                       
           </div>
@@ -46,9 +50,10 @@ function NavMenu() {
 <div class="flex h-screen flex-col justify-between border-e bg-white ">
   <div class="px-4 py-6">
     <span
-      class="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600"
+      class="grid h-10 w-[100%] place-content-center rounded-lg bg-gray-100 text-xl text-gray-600"
     >
-      Food Cuisine
+     <span className='flex justify-center h-8  items-center font-bold'> 
+                          <IoFastFoodSharp className='flex justify-center h-8  items-center font-bold' />Food Cuisine </span>
     </span>
 
     <nav aria-label="Main Nav" class="mt-6 flex flex-col space-y-1">
