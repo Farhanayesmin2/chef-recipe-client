@@ -3,6 +3,23 @@ import { ToastContainer, toast } from "react-toastify";
 import { FcTabletAndroid } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 const Register = () => {
+
+    const handleRegister = event => {
+  
+        event.preventDefault();
+      const form = event.target;
+      const name = form.name.value;
+      const photoURL = form.photoURL.value;
+      const email = form.email.value;
+      const password = form.password.value;
+   
+ console.log(name, email, photoURL, password);
+
+}
+
+
+
+
     return (
         <div>
              <div className="font-sans ">
@@ -17,7 +34,7 @@ const Register = () => {
               <p className="text-xs mt-4 text-[#002D74]">
                 If you are not a member, easily register in
               </p>
-              <form  className="flex flex-col gap-4">
+              <form  onSubmit={handleRegister} className="flex flex-col gap-4">
                 <input
                   className="p-2 mt-8 rounded-xl border"
                   type="name"
@@ -32,8 +49,8 @@ const Register = () => {
                 />
                 <div className="relative">
                   <input
-                                        className="p-2 rounded-xl border w-full"
-                                         name="photoURL"
+                    className="p-2 rounded-xl border w-full"
+                     name="photoURL"
                   type="text"
                     
                     placeholder="Photo URL"
