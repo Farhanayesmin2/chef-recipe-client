@@ -5,7 +5,9 @@ import Blog from '../Pages/Blog/Blog';
 import Home from '../Pages/Home/Home';
 import Login from '../Register/Login/Login';
 import Register from '../Register/Register';
-export const router = createBrowserRouter([
+
+
+ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
@@ -32,3 +34,4 @@ export const router = createBrowserRouter([
   },
 ]);
 
+export default router;

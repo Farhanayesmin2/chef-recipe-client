@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import { FcTabletAndroid } from "react-icons/fc";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Contexts/UserContext/UserContext';
+
 const Register = () => {
 
+    const [error, setError] = useState('');
+    const { createUser} = useContext(AuthContext);
     const handleRegister = event => {
   
         event.preventDefault();
@@ -12,10 +16,57 @@ const Register = () => {
       const photoURL = form.photoURL.value;
       const email = form.email.value;
       const password = form.password.value;
-   
- console.log(name, email, photoURL, password);
+        console.log(name, email, photoURL, password);
 
-}
+        createUser(email, password)
+       .then((result) => {
+           const user = result.user;
+            console.log(user);
+              setError('');
+         form.reset();
+          
+  })
+          .catch(error => {
+ console.error(error);
+ toast.error(error.message)
+});
+
+
+//  Validate input fields
+       if (!name) {
+      toast.error("Name is required.");
+      return;
+    }
+    if (!email) {
+      toast.error("Email is required.");
+      return;
+    }
+       if (!photoURL) {
+      toast.error("PhotoURL is required.");
+      return;
+    }
+    if (!password) {
+      toast.error("Password is required.");
+      return;
+    
+     
+    }
+
+
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters.");
+      return;
+    }
+  
+          
+      if (!error)  {
+        toast.success("Successfully Registered!");
+      }
+    
+     
+   
+  };
+
 
 
 
@@ -78,18 +129,19 @@ const Register = () => {
                 </div>
                 <p className="text-danger">
                   
-                  <ToastContainer
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                  />
+                {error}
+                      <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
                 </p>
 
                 <button
