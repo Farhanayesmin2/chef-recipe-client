@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { IoFastFoodOutline, IoFastFoodSharp } from "react-icons/io5";
+import { AuthContext } from '../../../Contexts/UserContext/UserContext';
+import { Avatar } from 'flowbite-react';
   
 function NavMenu() {
   const [isOpen, setIsOpen] = useState(false);
+
+// this is for user and logOut
+   const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   return (
     <nav className=" bg-white shadow-md font-mono">
@@ -19,14 +30,50 @@ function NavMenu() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline font-bold space-x-4">
               <Link to="/home" className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">Home</Link>
-              <Link to="/jobs" className="text-[#774d62]  border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">Applied Jobs</Link>
-              <Link to="/statistics" className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">Statistics</Link>
+              <Link to="/chef" className="text-[#774d62]  border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">All Chef</Link>
+              <Link to="/favourite" className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">Statistics</Link>
               <Link to="/blog" className="text-[#774d62]  border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">Blog</Link>
             </div>
           </div>
-          <div className="hidden md:block bg-[#774d62]">
-            <button className="shadow-lg    text-white font-semibold  px-4 py-2 rounded hover:bg-blue-950">Login</button>
+
+
+
+
+          <div className="hidden md:block">
+
+
+
+   <div className="flex items-center">
+        {user ? (
+          <button className="btn btn-ghost btn-circle">
+            <Link to="/profile">
+              <div className="avatar online">
+                <div className="w-12 rounded-full">
+                  <abbr
+                    title={user.displayName ? user.displayName : user.email}
+                  >
+                    <Avatar
+                      img={user.photoURL ? user.photoURL : profile}
+                      rounded={true}
+                      status="busy"
+                      statusPosition="top-right"
+                    />
+                  </abbr>
+                </div>
+              </div>
+            </Link>
+          </button>
+        ) : (
+          <Link
+            className="py-2 mx-1 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            to="/login"
+          >
+            <button>Login</button>
+          </Link>
+        )}
+      </div>
           </div>
+
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -104,29 +151,57 @@ function NavMenu() {
             <span class="text-sm font-medium"> Security </span>
           </a>
 
-          <form action="/logout">
-            <button
-              type="submit"
-              class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 opacity-75"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
+           <>
+                {user?.uid ? (
+                  <>
+                    <button
+                      className="py-2 md:mr-6 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      onClick={handleLogOut}
+                    >
+                      Log out
+                    </button>
+                    <button className="btn btn-ghost btn-circle">
+                      <Link to={"/profile"}>
+                        <div className="avatar online">
+                          <div className="w-12 rounded-full">
+                            <abbr
+                              title={
+                                user?.displayName
+                                  ? user?.displayName
+                                  : user.email
+                              }
+                            >
+                              <Avatar
+                                 img={user?.photoURL ? user?.photoURL : profile}
+                                rounded={true}
+                                status="busy"
+                                statusPosition="top-right"
+                              />
+                             
+                            </abbr>
+                          </div>
+                        </div>
+                      </Link>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      className="py-2 mx-1 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      to="/login"
+                    >
+                      <button>LogIn</button>
+                    </Link>
 
-              <span class="text-sm font-medium"> Logout </span>
-            </button>
-          </form>
+                    <Link
+                      className="py-2 mx-1 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      to="/register"
+                    >
+                      <button>Register</button>
+                    </Link>
+                  </>
+                )}
+              </>
         </nav>
       </details>
     </nav>

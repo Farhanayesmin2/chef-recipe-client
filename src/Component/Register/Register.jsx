@@ -7,26 +7,28 @@ import { AuthContext } from '../Contexts/UserContext/UserContext';
 const Register = () => {
 
     const [error, setError] = useState('');
-    const { createUser} = useContext(AuthContext);
+    const { createUser,updateUserProfile,} = useContext(AuthContext);
     const handleRegister = event => {
   
-        event.preventDefault();
+       event.preventDefault();
       const form = event.target;
       const name = form.name.value;
       const photoURL = form.photoURL.value;
       const email = form.email.value;
       const password = form.password.value;
-        console.log(name, email, photoURL, password);
+      console.log(name, photoURL, email, password);
 
-        createUser(email, password)
-       .then((result) => {
-           const user = result.user;
-         console.log(user);
-            form.reset();
+      createUser(email, password)
+          .then(result => {
+              const user = result.user;
+              console.log(user);
               setError('');
-      
+              form.reset();
+              handleUpdateUserProfile(name, photoURL);
+
           
-  })
+            
+          })
           .catch(error => {
  console.error(error);
  toast.error(error.message)
@@ -69,7 +71,21 @@ const Register = () => {
   };
 
 
+  const handleUpdateUserProfile = (name, photoURL) => {
+      const profile = {
+          displayName: name,
+          photoURL: photoURL
+      }
 
+      updateUserProfile(profile)
+          .then(() => { })
+          .catch(error => console.error(error));
+  }
+
+
+  const handleAccepted = event => {
+      setAccepted(event.target.checked)
+  }
 
 
     return (

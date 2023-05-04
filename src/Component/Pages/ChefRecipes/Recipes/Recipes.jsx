@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const Recipes = ({ cook }) => {
     const { recipe_name, cooking_method, ingredients, recipe_img } = cook;
-     const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
+    
+    
 
   const handleFavoriteClick = () => {
     setIsFavorite(true);
-     showToast()
+    toast.success('The recipe is your favorite.');
   };
 
-  const showToast = () => {
-    const toast = document.getElementById('toast');
-    toast.classList.remove('hidden');
-    setTimeout(() => {
-      toast.classList.add('hidden');
-    }, 3000);
-  };
+
+//   const handleFavoriteClick = () => {
+//     setIsFavorite(true);
+//       showToast()
+
+//   };
+
+//   const showToast = () => {
+//       const toast = document.getElementById('toast');
+//             toast.success("The recipe is your favorite.")
+//     toast.classList.remove('hidden');
+//     setTimeout(() => {
+//       toast.classList.add('hidden');
+//     }, 3000);
+//   };
 
   return (
     <div>
+    
+          
       <div className="rounded-lg shadow transition hover:shadow-lg font-sherif">
         <img
           alt="cooking pic"
@@ -53,7 +67,23 @@ const Recipes = ({ cook }) => {
           { isFavorite ? 'Favorited' : 'Favorite' }
         </button>
               </div>
+              
         
+          </div>
+          <ToastContainer
+                      position="top-center"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+          />
+           <div id="toast" className="hidden absolute bottom-4 left-4 bg-green-500 text-white py-2 px-4 rounded">
+        Recipe favorited!
       </div>
     </div>
   );

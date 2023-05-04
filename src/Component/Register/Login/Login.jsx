@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,14 +10,19 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../Contexts/UserContext/UserContext";
 
 const Login = () => {
-
-  const [error, setError] = useState('');
-  const { logIn, setLoading, providerLogin } = useContext(AuthContext);
- 
-
+const [error, setError] = useState('');
+ const { logIn, setLoading, providerLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [user, setUser] = useState({});
   const provider = new GoogleAuthProvider();
+
+  const from = location.state?.from?.pathname || '/';
+ 
+
+
+
 
 
 
@@ -34,6 +39,7 @@ const Login = () => {
           form.reset();
         console.log(user);
         setError('');
+         navigate(from, { replace: true });
         
       })
       .catch(error => {
