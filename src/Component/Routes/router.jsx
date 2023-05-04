@@ -3,6 +3,7 @@ import {createBrowserRouter} from "react-router-dom";
 import Main from '../Layout/Main';
 import AllChefs from '../Pages/AllChefs/AllChefs';
 import Blog from '../Pages/Blog/Blog';
+import ChefRecipes from '../Pages/ChefRecipes/ChefRecipes';
 import Home from '../Pages/Home/Home';
 import Login from '../Register/Login/Login';
 import Register from '../Register/Register';
@@ -35,7 +36,13 @@ import Register from '../Register/Register';
                 path: "/chef",
                 element: <AllChefs></AllChefs>,
               loader: ()  => fetch('http://localhost:5000/chef') 
+      },
+                  {
+                path: '/chef/:id',
+                element: <ChefRecipes></ChefRecipes>,
+                loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
             },
+           
     ],
   },
 ]);

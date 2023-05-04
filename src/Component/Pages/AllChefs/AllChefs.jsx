@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiTwotoneLike } from "react-icons/ai";
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 
 
@@ -18,7 +18,7 @@ const AllChefs = () => {
         
 <a href="#" class="group relative block overflow-hidden">
   <button
-    class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+    class="absolute hover:bg-red-800 end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
   >
     <span class="sr-only">Wishlist</span>
 
@@ -57,11 +57,11 @@ const AllChefs = () => {
 <p className="text-gray-700  text-base">Number of Recipes: <span className='font-bold text-red-950'>{chef.numberOfRecipes}</span></p>
             <p className="text-gray-700 inline-flex items-center text-base">Likes:{chef.likes} <AiTwotoneLike className='text-blue-500 ml-1 w-4 h-8'></AiTwotoneLike>  </p>
     <form class="mt-4">
-      <button
-        class="block w-full text-white rounded bg-red-950 p-4 text-lg font-medium transition hover:scale-105"
+      <Link to={`/chef/${chef._id}`}
+        className="block w-full text-white rounded bg-red-950 p-4 text-lg font-medium transition hover:scale-105"
       >
         View Recipes Button
-      </button>
+      </Link>
     </form>
   </div>
 </a>
