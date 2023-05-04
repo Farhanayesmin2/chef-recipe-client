@@ -5,6 +5,7 @@ import AllChefs from '../Pages/AllChefs/AllChefs';
 import Blog from '../Pages/Blog/Blog';
 import ChefRecipes from '../Pages/ChefRecipes/ChefRecipes';
 import Home from '../Pages/Home/Home';
+import NotFound from '../Pages/NotFound/NotFound';
 import Login from '../Register/Login/Login';
 import Register from '../Register/Register';
 
@@ -15,7 +16,7 @@ import Register from '../Register/Register';
     element: <Main></Main>,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home></Home>
         
         },
@@ -35,7 +36,7 @@ import Register from '../Register/Register';
                 {
                 path: "/chef",
                 element: <AllChefs></AllChefs>,
-              loader: ()  => fetch('http://localhost:5000/chef') 
+              // loader: ()  => fetch('http://localhost:5000/chef') 
       },
                   {
                 path: '/chef/:id',
@@ -44,7 +45,11 @@ import Register from '../Register/Register';
             },
            
     ],
-  },
+   },
+   {
+    path: '*',
+    element: <NotFound></NotFound>
+},
 ]);
 
 export default router;
