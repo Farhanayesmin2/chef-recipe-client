@@ -5,8 +5,88 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { FcKindle } from "react-icons/fc";
 import Github from "../../Others/Github/Github";
+import { useContext, useState } from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import { AuthContext } from "../../Contexts/UserContext/UserContext";
 
 const Login = () => {
+
+  const [error, setError] = useState('');
+  const { logIn, setLoading, providerLogin } = useContext(AuthContext);
+ 
+
+
+  const [user, setUser] = useState({});
+  const provider = new GoogleAuthProvider();
+
+
+
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email,password)
+
+    logIn(email, password)
+      .then(result => {
+        const user = result.user; 
+          form.reset();
+        console.log(user);
+        setError('');
+        
+      })
+      .catch(error => {
+        console.error(error)
+        setError(error.message);
+        toast.error(error.message)
+           if (!error)  {
+        toast.success("Successfully Login!");
+      }
+
+      })
+      .finally(() => {
+        setLoading(false);
+      })
+
+  }
+  const googleAuthHandler = () => {
+    providerLogin(provider)
+      .then(result => {
+        const user = result.user;
+        setUser(user);
+        console.log(user);
+      })
+      .catch(error => {
+        console.error('error', error);
+      })
+
+  }
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="">
       <div className="font-sans ">
@@ -21,7 +101,7 @@ const Login = () => {
               <p className="text-xs mt-4 text-[#002D74]">
                 If you are already a member, easily log in
               </p>
-              <form className="flex flex-col gap-4">
+              <form  onSubmit={handleLogin} className="flex flex-col gap-4">
                 <input
                   className="p-2 mt-8 rounded-xl border"
                   type="email"
@@ -36,6 +116,7 @@ const Login = () => {
                     placeholder="Password"
                   />
                   <p className="text-danger">
+                    {error}
                     <ToastContainer
                       position="top-center"
                       autoClose={5000}
@@ -71,7 +152,7 @@ const Login = () => {
                 <p className="text-center text-sm">OR</p>
                 <hr className="border-gray-400" />
               </div>
-              <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
+              <button  onClick={googleAuthHandler}  className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
                 <svg
                   className="mr-3"
                   xmlns="http://www.w3.org/2000/svg"

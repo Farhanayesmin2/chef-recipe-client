@@ -21,9 +21,10 @@ const Register = () => {
         createUser(email, password)
        .then((result) => {
            const user = result.user;
-            console.log(user);
+         console.log(user);
+            form.reset();
               setError('');
-         form.reset();
+      
           
   })
           .catch(error => {
@@ -53,8 +54,8 @@ const Register = () => {
     }
 
 
-    if (password.length < 6) {
-      toast.error("Password should be at least 6 characters.");
+    if (password.length >6) {
+      toast.error("Password should be less than 6 characters.");
       return;
     }
   
