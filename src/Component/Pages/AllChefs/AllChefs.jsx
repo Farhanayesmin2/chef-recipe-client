@@ -24,8 +24,6 @@ const AllChefs = () => {
   if (loading) {
     return Sipnner();
   }
-
-  console.log(data);
   return (
     <div>
       <h1 className="text-4xl font-serif text-red-950 text-center mt-5 font-bold">
