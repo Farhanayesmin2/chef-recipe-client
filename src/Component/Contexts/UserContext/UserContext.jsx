@@ -57,7 +57,7 @@ const AuthProviders = ({ children }) => {
   };
 
 
-  const Sipnner = () => {
+  const Spinner = () => {
   return  <div class="text-center">
         <div role="status">
           <svg
@@ -106,7 +106,7 @@ const AuthProviders = ({ children }) => {
     signInWithGitHub,
     logOut,
     userProfile,
-    Sipnner
+    Spinner
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -1,16 +1,17 @@
-import { Spinner } from 'flowbite-react';
+
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext/UserContext';
 
 
 
+
 const PrivateRoute = ({children}) => {
-    const {user, loading} = useContext(AuthContext);
+    const {user, loading,Spinner} = useContext(AuthContext);
     const location = useLocation();
 
     if(loading){
-        return  <Spinner animation="border" variant="primary" />
+        return Spinner();
     }
 
     if(!user){

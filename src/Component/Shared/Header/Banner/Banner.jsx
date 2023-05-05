@@ -23,16 +23,15 @@ const Banner = () => {
   >
     <div class="max-w-xl text-start ltr:sm:text-left rtl:sm:text-right">
       <h1 class="text-3xl font-extrabold sm:text-5xl">
-        Let us find your
+       Let us find your
 
         <strong class="block font-extrabold text-rose-700">
-          Forever Home.
+        Favourite Chef.
         </strong>
       </h1>
 
       <p class="mt-4 max-w-lg sm:text-xl/relaxed">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-        tenetur fuga ducimus numquam ea!
+        Food is not just essential for our survival, it's also a universal language that brings people together!
       </p>
 
       <div class="mt-8 flex flex-wrap gap-4 text-center">
@@ -40,14 +39,14 @@ const Banner = () => {
           href="#"
           class="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
         >
-          Get Started
+        About Our Chef
         </a>
 
         <a
           href="#"
           class="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
         >
-          Learn More
+          Explore Services
         </a>
       </div>
     </div>
@@ -63,12 +62,3 @@ const Banner = () => {
 export default Banner;
 
 
-
-// const images = [
-//   "https://images.pexels.com/photos/12620889/pexels-photo-12620889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//   "https://www.dhakafoodster.com/wp-content/uploads/2021/06/Sultan%E2%80%99s-Diner-Mirpur-Kacchi-Biriyani-1.jpg",
-//   "https://t4.ftcdn.net/jpg/02/57/02/67/360_F_257026750_ckdlvzplvocnCn8aGQhdD8tZ430O4hgX.jpg",
-// ];
-// import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
-{/* //  <BsChevronDoubleRight className="h-6 w-6" />
-//                     <BsChevronDoubleLeft className="h-6 w-6" /> */}

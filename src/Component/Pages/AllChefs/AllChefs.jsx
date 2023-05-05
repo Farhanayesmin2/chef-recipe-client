@@ -9,7 +9,7 @@ import { AuthContext } from "../../Contexts/UserContext/UserContext";
 const AllChefs = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const { Sipnner } = useContext(AuthContext);
+  const {Spinner } = useContext(AuthContext);
 // data fetch 
   useEffect(() => {
     fetch("https://top-chef-server-site-farhanayesmin2.vercel.app/chef")
@@ -22,7 +22,7 @@ const AllChefs = () => {
   }, []);
 // Show a spinner while the data is loading
   if (loading) {
-    return Sipnner();
+    return Spinner();
   }
   return (
     <div>
@@ -34,7 +34,7 @@ const AllChefs = () => {
         recipes.We wish all are giving best service.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 font-mono">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 font-serif">
         {data.map((chef) => (
           <div
             key={chef.id}

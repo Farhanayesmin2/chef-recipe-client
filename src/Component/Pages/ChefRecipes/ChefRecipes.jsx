@@ -5,7 +5,7 @@ import { AiTwotoneLike } from "react-icons/ai";
 import LazyLoad from "react-lazyload";
 import { AuthContext } from "../../Contexts/UserContext/UserContext";
 const ChefRecipes = () => {
-   const { Sipnner } = useContext(AuthContext);
+   const { Spinner } = useContext(AuthContext);
   const allRecipes = useLoaderData();
   const [loading, setLoading] = useState(true);
   const [chefData, setChefData] = useState({});
@@ -18,7 +18,7 @@ const ChefRecipes = () => {
 
 // Show a spinner while the data is loading
   if (loading) {
-    return Sipnner();
+    return Spinner();
   }
 
 

@@ -63,11 +63,11 @@ function NavMenu() {
                     color: isActive ? "red" : "#774d62",
                   };
                 }}
-                to="/resturant"
+                to="/restaurant"
                 className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
-                Resturant
+               Restaurant
               </NavLink>
               <NavLink
                 style={({ isActive }) => {
@@ -201,11 +201,11 @@ function NavMenu() {
                       color: isActive ? "red" : "#774d62",
                     };
                   }}
-                  to="/resturant"
+                  to="/restaurant"
                   className="text-[#774d62] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
-                  Resturant
+                 Restaurant
                 </NavLink>
                 <NavLink
                   style={({ isActive }) => {

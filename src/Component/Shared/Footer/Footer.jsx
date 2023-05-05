@@ -6,7 +6,7 @@ const Footer = () => {
         <div>
    
 
-<footer aria-label="Site Footer" class="bg-white font-mono">
+<footer aria-label="Site Footer" class="bg-white font-serif">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
@@ -18,8 +18,7 @@ const Footer = () => {
         <p
           class="mt-6  max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
         >
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-          consequuntur amet culpa cum itaque neque.
+         The History of Kitchens and Cooks gives further intimation on Mr Boulanger usual menu, stating confidently that "Boulanger served salted poultry and fresh eggs, all presented without a tablecloth on small marble tables"
         </p>
 
         <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
@@ -151,7 +150,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Company History
+                  Our History
                 </a>
               </li>
 
@@ -160,7 +159,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Meet the Team
+                 Home
                 </a>
               </li>
 
@@ -169,7 +168,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Employee Handbook
+                Restaurant
                 </a>
               </li>
 
@@ -178,7 +177,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Careers
+                  Blog
                 </a>
               </li>
             </ul>
@@ -195,7 +194,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Web Development
+                 Top Chef
                 </a>
               </li>
 
@@ -204,7 +203,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Web Design
+                  Single Chef
                 </a>
               </li>
 
@@ -213,7 +212,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Marketing
+                Our Restaurant
                 </a>
               </li>
 
@@ -222,7 +221,7 @@ const Footer = () => {
                   class="text-gray-700 transition hover:text-gray-700/75"
                   href="/"
                 >
-                  Google Ads
+                  Booking Services
                 </a>
               </li>
             </ul>
@@ -353,7 +352,7 @@ const Footer = () => {
               </svg>
 
               <address class="-mt-0.5 flex-1 not-italic text-gray-700">
-                213 Lane, London, United Kingdom
+                213 Lane, Dhaka, Bangladesh
               </address>
             </li>
           </ul>

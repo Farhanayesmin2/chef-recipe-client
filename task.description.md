@@ -102,7 +102,8 @@ Create a website that shows the recipes of all available chefs. The website must
 
 1. The Chef Recipe page will be a private/protected page. If you reload the protected/private route (after login), this page will not redirect the user to the login page. Instead, it will keep the logged-in user on the protected route.
 
-1. Apply lazy load to the chef picture either on the banner of `Chef Recipes` or on the chef pictures of the six cards on the Homepage.
+1. Apply lazy load to the chef picture either
+   on the banner of `Chef Recipes` or on the chef pictures of the six cards on the Homepage.
 
    > Hint: Google `React Awesome components`, go to the GitHub repo, find `react-lazy-load`, and try it. Alternatively, you can try any other package as well.
 
