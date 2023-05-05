@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Recipes = ({ cook }) => {
     const { recipe_name, cooking_method, ingredients, recipe_img } = cook;
     const [isFavorite, setIsFavorite] = useState(false);
-    
+    const [loading, setLoading] = useState(true);
     
 
   const handleFavoriteClick = () => {
@@ -14,35 +15,29 @@ const Recipes = ({ cook }) => {
   };
 
 
-//   const handleFavoriteClick = () => {
-//     setIsFavorite(true);
-//       showToast()
-
-//   };
-
-//   const showToast = () => {
-//       const toast = document.getElementById('toast');
-//             toast.success("The recipe is your favorite.")
-//     toast.classList.remove('hidden');
-//     setTimeout(() => {
-//       toast.classList.add('hidden');
-//     }, 3000);
-//   };
 
   return (
-    <div>
+    <div >
     
           
-      <div className="rounded-lg shadow transition hover:shadow-lg font-sherif">
+      <div className="rounded-lg shadow hover:border-x-2 hover:border-red-400 transition hover:shadow-lg hover:shadow-slate-500 font-sherif h-full">
+      <LazyLoad height={400} width={400} threshold={0.95}>
+        {loading && (
+          <div
+            className="h-56 w-full bg-gray-200 animate-pulse"
+            style={{ minHeight: '200px' }}
+          />
+        )}
         <img
           alt="cooking pic"
           src={recipe_img}
           className="h-56 w-full object-cover"
+          onLoad={() => setLoading(false)}
         />
-
+      </LazyLoad>
         <div className="bg-white p-4 sm:p-6">
           <time datetime="2022-10-10" className="block text-xs text-gray-500">
-            10th Oct 2022
+            10th may 2023
           </time>
 
           <a href="#">
