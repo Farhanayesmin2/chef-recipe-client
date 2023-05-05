@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { AiTwotoneLike } from "react-icons/ai";
+import LazyLoad from 'react-lazyload';
 import { Link, useLoaderData } from 'react-router-dom';
 
 
 
 const AllChefs = () => {
-    const chefs = useLoaderData();
-    console.log(chefs);
+   // const chefs = useLoaderData();
+  const [data,setData] = useState([])
+useEffect(() => {
+    fetch('https://top-chef-server-site-farhanayesmin2.vercel.app/chef')
+    .then(res => res.json())
+    .then(d => setData(d))
+  }, []);
+  
+   console.log(data);
     return (
         <div>
             <h1 className='text-4xl font-serif text-red-950 text-center mt-5 font-bold'>Our Top MasterChef</h1>
             <p className='text-gray-500 text-center my-4'>Explore More ,Our top six chef are showing most <br></br>delicious recipes.We wish all are giving best service.</p>
       
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 font-mono">
-      {chefs.map(chef => (
+      {data.map(chef => (
         <div key={chef.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
         
 <a href="#" class="group relative block overflow-hidden">
@@ -37,12 +46,14 @@ const AllChefs = () => {
       />
     </svg>
   </button>
-
-  <img
+<LazyLoad height={400} width={400} threshold={0.95}>
+          <img
     src={chef.chefPicture}
     alt=""
     class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
   />
+      </LazyLoad>
+
 
   <div class="relative border border-gray-100 bg-white p-6">
     <span

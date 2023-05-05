@@ -6,7 +6,7 @@ import Blog from '../Pages/Blog/Blog';
 import ChefRecipes from '../Pages/ChefRecipes/ChefRecipes';
 import Home from '../Pages/Home/Home';
 import NotFound from '../Pages/NotFound/NotFound';
-import Login from '../Register/Login/Login';
+import LogIn from '../Register/Login/LogIn/LogIn';
 import Register from '../Register/Register';
 
 
@@ -22,7 +22,7 @@ import Register from '../Register/Register';
         },
        {
                 path: '/login',
-                element: <Login></Login>
+                element: <LogIn></LogIn>
             },
             {
                 path: '/register',
@@ -33,6 +33,7 @@ import Register from '../Register/Register';
         element: <Blog></Blog>
         
       },
+    
                 {
                 path: "/chef",
                 element: <AllChefs></AllChefs>,
@@ -41,7 +42,7 @@ import Register from '../Register/Register';
                   {
                 path: '/chef/:id',
                 element: <ChefRecipes></ChefRecipes>,
-                loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
+                loader: ({params}) => fetch(`https://top-chef-server-site-farhanayesmin2.vercel.app/chef/${params.id}`)
             },
            
     ],

@@ -1,128 +1,124 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import React, { useContext, useState } from "react";
 import { FcKindle } from "react-icons/fc";
-import Github from "../../Others/Github/Github";
-import { useContext, useState } from "react";
-import { GoogleAuthProvider } from "firebase/auth";
-import { AuthContext } from "../../Contexts/UserContext/UserContext";
+import { ToastContainer, toast } from "react-toastify";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/UserContext/UserContext";
+import Github from "../../../Others/Github/Github";
 
-const Login = () => {
-const [error, setError] = useState('');
- const { logIn, setLoading, providerLogin } = useContext(AuthContext);
-  const navigate = useNavigate();
+const LogIn = () => {
+  // State variables
+  const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+
+  // Context variables and functions
+  const { signIn, signInWithGoogle, setUser } = useContext(AuthContext);
+
+  // Router variables and functions
   const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
-  const [user, setUser] = useState({});
-  const provider = new GoogleAuthProvider();
+  // Event handlers
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-  const from = location.state?.from?.pathname || '/';
- 
+    // Sign in with email and password
+    signIn(email, password)
+      .then((result) => {
+        // Reset error message and set user context
+        setErrorMessage("");
+        const loggedUser = result.user;
+        setUser(loggedUser);
 
-
-
-
-
-
-  const handleLogin = event => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email,password)
-
-    logIn(email, password)
-      .then(result => {
-        const user = result.user; 
-          form.reset();
-        console.log(user);
-        setError('');
-         navigate(from, { replace: true });
-        
+        // Navigate to previous page and reset form
+        navigate(from, { replace: true });
+        form.reset();
       })
-      .catch(error => {
-        console.error(error)
-        setError(error.message);
-        toast.error(error.message)
-           if (!error)  {
-        toast.success("Successfully Login!");
-      }
+      .catch((error) => {
+        // Display error message
+        toast.error(error.message);
 
+        // Display success message if there's no error
+        if (!error) {
+          toast.success("Successfully Login!");
+        }
+      });
+  };
+
+  const handleEmail = (e) => {
+    const input = e.target.value;
+    setEmail(input);
+  };
+
+  const handlePassword = (e) => {
+    const input = e.target.value;
+    setPassword(input);
+  };
+
+  const handleGoogleSignIn = () => {
+    // Sign in with Google
+    signInWithGoogle()
+      .then((result) => {
+        // Reset error message and set user context
+        setErrorMessage("");
+        const loggedUser = result.user;
+        setUser(loggedUser);
+
+        // Navigate to previous page
+        navigate(from, { replace: true });
       })
-      .finally(() => {
-        setLoading(false);
-      })
-
-  }
-  const googleAuthHandler = () => {
-    providerLogin(provider)
-      .then(result => {
-        const user = result.user;
-        setUser(user);
-        console.log(user);
-      })
-      .catch(error => {
-        console.error('error', error);
-      })
-
-  }
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      .catch((error) => {
+        // Display error message
+        setErrorMessage(error.message);
+      });
+  };
 
   return (
-    <div className="">
-      <div className="font-sans ">
-        <section className=" min-h-screen flex items-center justify-center">
-          {/* login container */}
-          <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
-            {/* form */}
-            <div className="md:w-1/2 px-8 md:px-16">
-              <h2 className="font-bold text-2xl text-[#002D74] flex">
-                Login<FcKindle className="pt-2 h-8"></FcKindle>{" "}
-              </h2>
-              <p className="text-xs mt-4 text-[#002D74]">
-                If you are already a member, easily log in
-              </p>
-              <form  onSubmit={handleLogin} className="flex flex-col gap-4">
+    <div className="font-sans my-10">
+      <section className="min-h-screen flex items-center justify-center">
+        {/* Login container */}
+        <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+          {/* Form */}
+          <div className="md:w-1/2 px-8 md:px-16">
+            <h2 className="font-bold text-2xl text-[#002D74] flex">
+              Login<FcKindle className="pt-2 h-8"></FcKindle>{" "}
+            </h2>
+            <p className="text-xs mt-4 text-[#002D74]">
+              If you are already a member, easily log in
+            </p>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {/* Email input */}
+              <input
+                className="p-2 mt-8 rounded-xl border"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={handleEmail}
+              />
+
+              {/* Password input */}
+              <div className="relative">
                 <input
-                  className="p-2 mt-8 rounded-xl border"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                />
-                <div className="relative">
-                  <input
+                 
+
                     className="p-2 rounded-xl border w-full"
-                    type="password"
+                  
                     name="password"
                     placeholder="Password"
+                      type={show ? "text" : "password"}
+          
+            required
+            value={password}
+            onChange={handlePassword}
                   />
+             
                   <p className="text-danger">
-                    {error}
+                     {errorMessage && <span className="text-red-500">{errorMessage}</span>}
                     <ToastContainer
                       position="top-center"
                       autoClose={5000}
@@ -136,8 +132,9 @@ const [error, setError] = useState('');
                       theme="light"
                     />
                   </p>
-
-                  <svg
+ 
+                <svg
+                   onClick={() => setShow(!show)}
                     xmlns="http://www.w3.org/2000/svg"
                     width={16}
                     height={16}
@@ -158,7 +155,7 @@ const [error, setError] = useState('');
                 <p className="text-center text-sm">OR</p>
                 <hr className="border-gray-400" />
               </div>
-              <button  onClick={googleAuthHandler}  className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
+              <button    onClick={handleGoogleSignIn} className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
                 <svg
                   className="mr-3"
                   xmlns="http://www.w3.org/2000/svg"
@@ -208,8 +205,8 @@ const [error, setError] = useState('');
           </div>
         </section>
       </div>
-    </div>
+    
   );
 };
 
-export default Login;
+export default LogIn;
