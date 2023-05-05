@@ -16,9 +16,11 @@ const Register = () => {
   const { createUser, userProfile, user, logOut, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    // Check for email and password errors before submitting the form
     if (emailError) {
       e.target.email.focus();
       return;
@@ -26,6 +28,7 @@ const Register = () => {
       e.target.password.focus();
       return;
     }
+// Update user profile with name and photo
     userProfile(name, photo)
       .then(() => {
         console.log(name);
@@ -34,6 +37,7 @@ const Register = () => {
       .catch((error) => {
         toast.setErrorMessage(error.message);
       });
+     // Create a new user with email and password
     createUser(email, password)
       .then((result) => {
         setErrorMessage("");
@@ -41,15 +45,17 @@ const Register = () => {
         setUser(loggedUser);
         form.reset();
         logOut();
+        // Display success message using toast
+    toast.success("Successfully Registered!");
 
       })
-              .catch(error => {
+      .catch(error => {
+// Display error message using toast
  console.error(error);
- toast.error(error.message)
+        toast.error(error.message)
+         
 });
-         if (!setErrorMessage)  {
-        toast.success("Successfully Registered!");
-      }       
+          
     
 
     !errorMessage || navigate("/login");

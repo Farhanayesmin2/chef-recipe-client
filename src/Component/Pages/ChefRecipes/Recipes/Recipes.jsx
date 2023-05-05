@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const Recipes = ({ cook }) => {
-    const { recipe_name, cooking_method, ingredients, recipe_img } = cook;
+    const { recipe_name,rating, cooking_method, ingredients, recipe_img } = cook;
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(true);
     
@@ -53,7 +54,15 @@ const Recipes = ({ cook }) => {
 <p className='text-gray-500 font-bold'>  Cooking Method:</p>
           <p className="mt-2  text-sm ">
           { cooking_method }
-                  </p>
+          </p>
+          <div className='flex items-center justify-left py-2 text-yellow-500'>
+          <p className='text-gray-900 font-bold mx-2'>Rating: {rating} </p>
+          <span><FaStar></FaStar></span> 
+          <span><FaStar></FaStar></span> 
+          <span><FaStar></FaStar></span> 
+          <span><FaStar></FaStar></span> 
+            <span><FaStarHalfAlt></FaStarHalfAlt>   </span> 
+            </div>
                         <button
           className={`bg-rose-900 hover:bg-rose-600 text-white font-bold py-2 px-4 rounded ${isFavorite ? 'cursor-not-allowed opacity-50' : ''}`}
           disabled={ isFavorite }
@@ -77,7 +86,7 @@ const Recipes = ({ cook }) => {
                       pauseOnHover
                       theme="light"
           />
-           <div id="toast" className="hidden absolute bottom-4 left-4 bg-green-500 text-white py-2 px-4 rounded">
+           <div className="hidden absolute bottom-4 left-4 bg-green-500 text-white py-2 px-4 rounded">
         Recipe favorited!
       </div>
     </div>
